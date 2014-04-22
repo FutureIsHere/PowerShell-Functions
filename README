@@ -1,0 +1,4 @@
+This repo contains some useful PowerShell function (NOT scripts), which could be used in your PS scripts.
+Detailed descripion you will find inside of folders.
+
+1. Parse-DiskpartList - the function converts output of "diskpart list" command into an object

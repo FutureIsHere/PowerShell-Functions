@@ -1,0 +1,66 @@
+Function  Parse-DiskpartList
+
+The function converts raw output of Diskpart's command "list" into an object. 
+The object consist of a note properties which got name from "list" command result table (i.e. "Volume ###", "Status" etc).
+It can parse output of the following "List" commands:
+DISK        - Display a list of disks. For example, LIST DISK.
+PARTITION   - Display a list of partitions on the selected disk.
+              For example, LIST PARTITION.
+VOLUME      - Display a list of volumes. For example, LIST VOLUME.
+VDISK       - Displays a list of virtual disks.
+
+
+EXAMPLE:
+Input:
+
+Microsoft DiskPart version 6.1.7601
+Copyright (C) 1999-2008 Microsoft Corporation.
+On computer: HS
+
+DISKPART> 
+  Volume ###  Ltr  Label        Fs     Type        Size     Status     Info
+  ----------  ---  -----------  -----  ----------  -------  ---------  --------
+  Volume 0     D   Data         NTFS   Mirror      1863 GB  Healthy            
+  Volume 1     E   de-DE_L2     CDFS   DVD-ROM      382 MB  Healthy            
+  Volume 2         System Rese  NTFS   Partition    100 MB  Healthy    System  
+  Volume 3     C                NTFS   Partition     55 GB  Healthy    Boot    
+
+DISKPART> 
+
+
+Output:
+Volume ### : Volume 0
+Ltr        : D
+Label      : Data
+Fs         : NTFS
+Type       : Mirror
+Size       : 1863 GB
+Status     : Healthy
+Info       : 
+
+Volume ### : Volume 1
+Ltr        : E
+Label      : de-DE_L2
+Fs         : CDFS
+Type       : DVD-ROM
+Size       : 382 MB
+Status     : Healthy
+Info       : 
+
+Volume ### : Volume 2
+Ltr        : 
+Label      : System Rese
+Fs         : NTFS
+Type       : Partition
+Size       : 100 MB
+Status     : Healthy
+Info       : System
+
+Volume ### : Volume 3
+Ltr        : C
+Label      : 
+Fs         : NTFS
+Type       : Partition
+Size       : 55 GB
+Status     : Healthy
+Info       : Boot
